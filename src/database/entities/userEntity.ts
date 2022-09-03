@@ -1,5 +1,5 @@
 import {Entity, BaseEntity, PrimaryColumn, OneToMany, Column} from "typeorm";
-import { ErrandsEntity } from "./errands";
+import { ErrandsEntity } from "./errandsEntity";
 
 @Entity({name: 'user'})
 export default class UserEntity extends BaseEntity {
