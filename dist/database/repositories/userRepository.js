@@ -20,6 +20,7 @@ class UserRepository {
             user.password = password;
             await user?.save();
         }
+        return user;
     }
     async create(name, password) {
         const user = new userEntity_1.default(name, password);

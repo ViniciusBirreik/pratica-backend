@@ -22,6 +22,8 @@ export default class UserRepository {
 
             await user?.save()
         }
+        
+        return user
     }
 
     async create(name: string, password: string) {
