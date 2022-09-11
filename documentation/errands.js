@@ -1,0 +1,4 @@
+exports.Errands = {
+    description: '',
+    details: ''
+}

@@ -1,4 +1,5 @@
 const { User } = require('./documentation/user')
+const { Errands } = require('./documentation/errands')
 
 module.exports = {
     info: {
@@ -22,6 +23,10 @@ module.exports = {
         User,
         UserList: [
             {href: '#/definitions/user'}
+        ],
+        Errands,
+        ErrandsList: [
+            {href: '#/definitions/errands'}
         ]
         
     }

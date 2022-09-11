@@ -1,5 +1,4 @@
 import { Request, Response } from "express";
-import { RepositoryNotTreeError } from "typeorm";
 import ErrandsService from "../service/errandsService";
 
 export default class ErrandsControler {

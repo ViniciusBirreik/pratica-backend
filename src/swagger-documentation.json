@@ -252,19 +252,45 @@
     },
     "/errands": {
       "get": {
-        "description": "",
+        "tags": [
+          "ErrandsList"
+        ],
+        "description": "lista os recados",
         "parameters": [],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Errands"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "comando inválido"
+          },
+          "500": {
+            "description": "Problema ao devolver sua solicitação"
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       },
       "post": {
-        "description": "",
+        "tags": [
+          "Errands"
+        ],
+        "description": "cadastra um recado",
         "parameters": [
           {
-            "name": "body",
+            "name": "description",
             "in": "body",
             "schema": {
               "type": "object",
@@ -279,35 +305,64 @@
                   "example": "any"
                 }
               }
+            },
+            "description": "recebe a descrição do recado",
+            "required": true
+          },
+          {
+            "name": "details",
+            "in": "body",
+            "description": "recebe o detalhe do recado",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "userId",
+            "in": "body",
+            "description": "recebe o id do usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Errands"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "comando inválido"
+          },
+          "500": {
+            "description": "Problema ao devolver sua solicitação"
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       }
     },
     "/errands/{id}": {
       "get": {
-        "description": "",
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "type": "string"
-          }
+        "tags": [
+          "Errands"
         ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "put": {
-        "description": "",
+        "description": "mostra um recado",
         "parameters": [
           {
             "name": "id",
@@ -316,7 +371,60 @@
             "type": "string"
           },
           {
-            "name": "body",
+            "name": "id",
+            "in": "param",
+            "required": true,
+            "type": "number",
+            "description": "recebe o id do recado"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Errands"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "comando inválido"
+          },
+          "500": {
+            "description": "Problema ao devolver sua solicitação"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "Errands"
+        ],
+        "description": "edita um recado",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "errandsId",
+            "in": "param",
+            "description": "recebe o id do recado",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "description",
             "in": "body",
             "schema": {
               "type": "object",
@@ -331,30 +439,102 @@
                   "example": "any"
                 }
               }
+            },
+            "description": "recebe a descrição do recado",
+            "required": true
+          },
+          {
+            "name": "details",
+            "in": "body",
+            "description": "recebe o detalhe do recado",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "userId",
+            "in": "body",
+            "description": "recebe o id do usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
             }
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Errands"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "comando inválido"
+          },
+          "500": {
+            "description": "Problema ao devolver sua solicitação"
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       },
       "delete": {
-        "description": "",
+        "tags": [
+          "Errands"
+        ],
+        "description": "deleta um recado",
         "parameters": [
           {
             "name": "id",
             "in": "path",
             "required": true,
             "type": "string"
+          },
+          {
+            "name": "errandsId",
+            "in": "param",
+            "description": "recebe o id do recado",
+            "required": true,
+            "type": "number"
           }
         ],
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/Errands"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "comando inválido"
+          },
+          "500": {
+            "description": "Problema ao devolver sua solicitação"
           }
-        }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
       }
     }
   },
@@ -377,6 +557,31 @@
           "href": {
             "type": "string",
             "example": "#/definitions/user"
+          }
+        }
+      }
+    },
+    "Errands": {
+      "type": "object",
+      "properties": {
+        "description": {
+          "type": "string",
+          "example": ""
+        },
+        "details": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
+    "ErrandsList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "example": "#/definitions/errands"
           }
         }
       }
