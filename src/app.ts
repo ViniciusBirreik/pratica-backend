@@ -3,6 +3,7 @@ import cors from 'cors'
 import Postgres from './database/connections/postgres'
 import UserRoutes from './routers/userRouters'
 import ErrandsRouters from './routers/errandsRouters'
+import DocsRouters from './routers/docs'
 
 export default class Application {
     private readonly app: express.Application
@@ -34,6 +35,7 @@ export default class Application {
     routers() {
         this.app.use(new UserRoutes().init())
         this.app.use(new ErrandsRouters().init())
+        this.app.use(new DocsRouters().init())
     }
 
     async database() {

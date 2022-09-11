@@ -1,0 +1,385 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "pratica backEnd",
+    "description": "API modulo backEnd"
+  },
+  "host": "localhost:8080",
+  "basePath": "/",
+  "schemes": [
+    "http",
+    "htttps"
+  ],
+  "securityDefinitions": {
+    "JWT": {
+      "description": "JWT token",
+      "type": "apiKey",
+      "in": "header",
+      "name": "Authorization"
+    }
+  },
+  "consumes": [
+    "application/json"
+  ],
+  "produces": [
+    "application/json"
+  ],
+  "paths": {
+    "/user": {
+      "get": {
+        "tags": [
+          "UserList"
+        ],
+        "description": "lista os usuários",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "comando inválido"
+          },
+          "500": {
+            "description": "Problema ao devolver sua solicitação"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "post": {
+        "tags": [
+          "User"
+        ],
+        "description": "cadastra um usuário",
+        "parameters": [
+          {
+            "name": "name",
+            "in": "body",
+            "description": "nome do usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "senha do usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "comando inválido"
+          },
+          "500": {
+            "description": "Problema ao devolver sua solicitação"
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "get": {
+        "tags": [
+          "User"
+        ],
+        "description": "mostra um usuário",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "param",
+            "required": true,
+            "type": "string",
+            "description": "id do usuário"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "comando inválido"
+          },
+          "500": {
+            "description": "Problema ao devolver sua solicitação"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "put": {
+        "tags": [
+          "User"
+        ],
+        "description": "atualiza um usuário",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "param",
+            "required": true,
+            "type": "string",
+            "description": "id do usuário"
+          },
+          {
+            "name": "name",
+            "in": "body",
+            "description": "nome do usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "password",
+            "in": "body",
+            "description": "senha do usuário",
+            "required": true,
+            "schema": {
+              "type": "object",
+              "properties": {}
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "comando inválido"
+          },
+          "500": {
+            "description": "Problema ao devolver sua solicitação"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      },
+      "delete": {
+        "tags": [
+          "User"
+        ],
+        "description": "deleta um usuário",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "param",
+            "required": true,
+            "type": "string",
+            "description": "id do usuário"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Success",
+            "schema": {
+              "type": "array",
+              "items": {
+                "$ref": "#/definitions/User"
+              },
+              "xml": {
+                "name": "main"
+              }
+            }
+          },
+          "400": {
+            "description": "comando inválido"
+          },
+          "500": {
+            "description": "Problema ao devolver sua solicitação"
+          }
+        },
+        "security": [
+          {
+            "Bearer": []
+          }
+        ]
+      }
+    },
+    "/errands": {
+      "get": {
+        "description": "",
+        "parameters": [],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "example": "any"
+                },
+                "details": {
+                  "example": "any"
+                },
+                "userId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/errands/{id}": {
+      "get": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "name": "body",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "description": {
+                  "example": "any"
+                },
+                "details": {
+                  "example": "any"
+                },
+                "userId": {
+                  "example": "any"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "description": "",
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "User": {
+      "type": "object",
+      "properties": {
+        "id": {},
+        "name": {
+          "type": "string",
+          "example": ""
+        }
+      }
+    },
+    "UserList": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "href": {
+            "type": "string",
+            "example": "#/definitions/user"
+          }
+        }
+      }
+    }
+  }
+}
