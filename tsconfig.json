@@ -6,7 +6,7 @@
     "module": "commonjs",                                 
     "rootDirs": [
       "./src",
-      "./test"
+      "./tests"
     ],                                  
     "outDir": "./dist",            
     "esModuleInterop": true,    
@@ -16,6 +16,7 @@
     "resolveJsonModule": true
   },
   "include": [
-    "./src"
-, "swagger.config.js"  ]
+    "./src",
+    "swagger.config.js"  
+  ]
 }
