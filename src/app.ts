@@ -22,6 +22,7 @@ export default class Application {
         await this.database()
     }
 
+    //istambul ignore next
     start(port: number) {
         this.app.listen(port)
     }

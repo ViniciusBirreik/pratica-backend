@@ -1,5 +1,5 @@
 import { Router } from "express";
-import UserController from "../constroller/userController";
+import UserController from "../controller/userController";
 
 export default class UserRoutes {
     init() {

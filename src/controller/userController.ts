@@ -18,8 +18,9 @@ export default class UserController {
     store = async (request: Request, response: Response) => {
         const service = new UserService
         const { name, password } = request.body
+        const user = service.create(name, password)
 
-        return response.json(service.create(name, password))
+        return response.json(user)
     }
 
     update = async (request: Request, response: Response) => {

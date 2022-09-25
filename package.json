@@ -24,7 +24,9 @@
     "@types/supertest": "^2.0.12",
     "@types/swagger-ui-express": "^4.1.3",
     "@types/typescript": "^2.0.0",
+    "cross-env": "^7.0.3",
     "jest": "^29.0.3",
+    "sqlite3": "^5.1.1",
     "supertest": "^6.2.4",
     "ts-jest": "^29.0.0",
     "ts-node-dev": "^2.0.0",
@@ -33,12 +35,16 @@
   "scripts": {
     "migration:run": "ts-node-dev --transpile-only ./node_modules/typeorm/cli.js migration:run",
     "migration:revert": "ts-node-dev --transpile-only ./node_modules/typeorm/cli.js migration:revert",
+    "migration:test": "cross-env NODE_ENV=test && migration:run",
     "build": "tsc",
     "dev": "ts-node-dev --respawn --transpile-only ./src/server.ts",
     "start": "node ./dist/server",
     "doc": "node ./swagger",
-    "test": "yarn jest --passWithNoTests --silent --noStackTrace --runInBand",
-    "test:verbose": "yarn jest --passWithNoTests --runInBand ----detecOpenHandles",
-    "test:coverage": "yarn test --coverage"
+    "test:setup": "rimraf ./db-test.sql && migration:test",
+    "test": "cross-env NODE_ENV=test && test:setup && jest --passWithNoTests --silent --noStackTrace --runInBand",
+    "test:verbose": "cross-env NODE_ENV=test && test:setup && jest --passWithNoTests --runInBand ----detecOpenHandles",
+    "test:coverage": "test --coverage",
+    "test:unit": "tests --watchAll -c ./jest-unit.config.ts",
+    "test:integration": "tests --watchAll -c ./jest-integration.config.ts"
   }
 }

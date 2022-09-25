@@ -1,10 +1,10 @@
 import { Router } from 'express'
-import ErrandsControler from '../constroller/errandsController'
+import ErrandsController from '../controller/errandsController'
 
 export default class ErrandsRouters {
     init() {
         const routers = Router()
-        const controller = new ErrandsControler()
+        const controller = new ErrandsController()
 
         routers.get('/errands',
                     controller.index

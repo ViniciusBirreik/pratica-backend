@@ -1,7 +1,7 @@
 import { Request, Response } from "express";
 import ErrandsService from "../service/errandsService";
 
-export default class ErrandsControler {
+export default class ErrandsController {
     index = async (request: Request, response: Response) => {
         const service = new ErrandsService
 
